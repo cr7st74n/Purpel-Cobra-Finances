@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const {ApolloError} = require('apollo-server-express')
 require("dotenv").config();
 
-
 module.exports = {
     authMiddleware({req}) {
         let token = req.headers.authorization;

@@ -3,7 +3,7 @@ import { AiOutlineMenu  } from "@react-icons/all-files/ai/AiOutlineMenu";
 import { Link, useLocation } from 'react-router-dom'
 import "../styles/Navbar.css"
 
-export default function(){
+export default function(props){
     const [extendNav, setExpendNav] = useState(false);
 
     const location = useLocation();
