@@ -11,10 +11,21 @@ const typeDefs = gql`
     token: ID
   }
 
+  type Expense {
+    _id: ID!
+    name: String!
+    expenseType: String!
+    price: Int!
+  }
+
+  type Query {
+    getExpenses: [Expense]
+  }
+
   type Mutation {
     addUser(email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
-    addExpense()!: Expense
+    addExpense(name: String!, expenseType: String!, price: Int!): Expense
   }
 `;
 
