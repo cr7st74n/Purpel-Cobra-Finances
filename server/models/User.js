@@ -28,6 +28,29 @@ userSchema.methods.validatePass = async function (unencryted_password) {
     return validPassword;
 };
 
+userSchema.methods.addTotals = async function () {
+    let groceryTotal = 0;
+    let autoTotal = 0;
+    let housingTotal = 0;
+    let entertainmentTotal = 0;
+    let savingsTotal = 0;
+    this.expenses.expense.map((expense) => {
+        if (expense.name === 'Grocery') {
+            groceryTotal += expense;
+        } else if (expense.name === 'Auto') {
+            autoTotal += expense;
+        } else if (expense.name === 'Housing') {
+            housingTotal += expense;
+        } else if (expense.name === 'Entertainment') {
+            entertainmentTotal += expense;
+        } else if (expense.name === 'Medical') {
+            medicalTotal += expense;
+        } else if (expense.name === 'Savings') {
+            savingsTotal += expense;
+        }
+    })
+}
+
 const User = model('User', userSchema);
 
 module.exports = User;
