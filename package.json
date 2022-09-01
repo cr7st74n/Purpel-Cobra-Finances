@@ -1,0 +1,31 @@
+{
+  "name": "react_playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "cd ./server && nodemon server.js",
+    "dev:client": "cd ./client && npm start",
+    "start": "cd ./server && npm start",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "seed:todos": "cd ./server/seeds && node todo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdtdesigns/react_playground_uofm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdtdesigns/react_playground_uofm/issues"
+  },
+  "homepage": "https://github.com/jdtdesigns/react_playground_uofm#readme",
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "graphql": "^16.6.0"
+  }
+}
