@@ -1,5 +1,5 @@
 const { User, Expense } = require('../models');
-const {signToken} = require('../auth');
+const { signToken } = require('../auth');
 const { ApolloError } = require('apollo-server-express');
 
 const resolvers = {
@@ -20,7 +20,7 @@ const resolvers = {
             throw new ApolloError(err)
         }
         },
-        async addExpense(_, { name, expenseType, price }, context) {
+        async addExpense(_, { name, expenseType, price }) {
             return await Expense.create({name, expenseType, price});
         },
         async loginUser(_, { email, password }, context) {
