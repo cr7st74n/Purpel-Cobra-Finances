@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const {ApolloError} = require('apollo-server-express')
 
-const JWT_SECRET = 'jsonwebtoken secret string, yes super secret'
+const JWT_SECRET = ''
 
 module.exports = {
     authMiddleware({req}) {
@@ -17,7 +17,7 @@ module.exports = {
 
         try{
             const { data } = jwt.decode(token, JWT_SECRET, {
-                maxAge: '3m'
+                maxAge: '6h'
             } );
 
             req.user = data;
@@ -29,7 +29,7 @@ module.exports = {
 
     signToken(user_data) {
         return jwt.sign({data: user_data}, JWT_SECRET, {
-            expiresIn: '3m'
+            expiresIn: '6h'
         });
     }
 }
