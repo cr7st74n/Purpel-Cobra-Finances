@@ -19,7 +19,7 @@ async function startServer(typeDefs, resolvers) {
 
   await server.start();
 
-  server.authMiddleware({ app });
+  server.applyMiddleware({ app });
 
   db.once('open', () => {
     app.listen(PORT, () => {

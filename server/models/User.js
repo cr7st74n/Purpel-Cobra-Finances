@@ -34,7 +34,7 @@ userSchema.methods.addTotals = async function () {
     let housingTotal = 0;
     let entertainmentTotal = 0;
     let savingsTotal = 0;
-    this.expenses.expense.map((expense) => {
+    this.expenses.map((expense) => {
         if (expense.name === 'Grocery') {
             groceryTotal += expense;
         } else if (expense.name === 'Auto') {

@@ -1,12 +1,17 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
 const expSchema = new Schema ({
+    expenseType: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true,
     },
-    expense: {
-        type: Int
+    price: {
+        type: Number,
+        required: true
     }
 });
 
