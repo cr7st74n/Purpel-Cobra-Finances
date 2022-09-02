@@ -15,7 +15,7 @@ module.exports = {
         token = token.split(' ').pop().trim()
 
         try{
-            const { data } = jwt.decode(token, JWT_SECRET, {
+            const { data } = jwt.decode(token, process.env.JWT_SECRET, {
                 maxAge: '6h'
             } );
 
@@ -27,7 +27,7 @@ module.exports = {
     },
 
     signToken(user_data) {
-        return jwt.sign({data: user_data}, JWT_SECRET, {
+        return jwt.sign({data: user_data}, process.env.JWT_SECRET, {
             expiresIn: '6h'
         });
     }
