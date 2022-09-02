@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { AiOutlineMenu  } from "@react-icons/all-files/ai/AiOutlineMenu";
-import { Link, useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import "../styles/Navbar.css"
+import { logout } from '../utils/auth'
 
-export default function(props){
+export default function Navbar(props){
     const [extendNav, setExpendNav] = useState(false);
 
     const location = useLocation();
@@ -19,10 +20,20 @@ export default function(props){
                 </button>
             </div>
             <div className="links">
-                <Link to="/">Home</Link>
-                <Link to="page2">Page2</Link>
-                <Link to="page3">Page3</Link>
-                {/* <Link to="/">Log out</Link> */}
+                <NavLink to="/">Home</NavLink>
+                {props.user && (
+                    <>
+                    <NavLink to="/dash">Dashboard</NavLink>
+                    <NavLink to="/stats">Expenses Breakdown</NavLink>
+                    <button onClick={logout}>Log Out</button>
+                    </>
+                )}
+                {!props.user && (
+                    <>
+                    <NavLink to='/login'>Login</NavLink>
+                    <NavLink to='/register'>Register</NavLink>
+                    </>
+                )}
             </div>
 
         </div>
