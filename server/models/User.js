@@ -35,18 +35,18 @@ userSchema.methods.addTotals = async function () {
     let entertainmentTotal = 0;
     let savingsTotal = 0;
     this.expenses.map((expense) => {
-        if (expense.name === 'Grocery') {
-            groceryTotal += expense;
-        } else if (expense.name === 'Auto') {
-            autoTotal += expense;
-        } else if (expense.name === 'Housing') {
-            housingTotal += expense;
-        } else if (expense.name === 'Entertainment') {
-            entertainmentTotal += expense;
-        } else if (expense.name === 'Medical') {
-            medicalTotal += expense;
-        } else if (expense.name === 'Savings') {
-            savingsTotal += expense;
+        if (expense.expenseType === 'Grocery') {
+            groceryTotal += expense.price;
+        } else if (expense.expenseType === 'Auto') {
+            autoTotal += expense.price;
+        } else if (expense.expenseType === 'Housing') {
+            housingTotal += expense.price;
+        } else if (expense.expenseType === 'Entertainment') {
+            entertainmentTotal += expense.price;
+        } else if (expense.expenseType === 'Medical') {
+            medicalTotal += expense.price;
+        } else if (expense.expenseType === 'Savings') {
+            savingsTotal += expense.price;
         }
     })
 }
