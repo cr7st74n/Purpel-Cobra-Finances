@@ -26,6 +26,7 @@ const typeDefs = gql`
     addUser(email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
     addExpense(name: String!, expenseType: String!, price: Int!): Expense
+    addExpenseType(expenseType: String!): Expense
   }
 `;
 

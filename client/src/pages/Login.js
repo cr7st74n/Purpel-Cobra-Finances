@@ -29,8 +29,8 @@ export default function Login(props){
     let user, token
     const userData = await loginUser()
 
-    user = userData.user
-    token = userData.token
+    user = userData.data.loginUser.user
+    token = userData.data.loginUser.token
 
     localStorage.setItem('token', token)
     props.setUser(user)
