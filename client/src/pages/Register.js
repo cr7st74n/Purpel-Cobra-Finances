@@ -21,8 +21,9 @@ export default function Register(props){
   });
   const navigate = useNavigate()
 
-  const addUser = useMutation(ADD_USER, 
-    {variables: formInput})
+  const [addUser] = useMutation(ADD_USER, 
+    {variables: formInput
+  })
 
   const handleAddUser = async (event) => {
     event.preventDefault()
@@ -39,14 +40,17 @@ export default function Register(props){
   }
 
   const handleInput = (event) => {
-    setFormInput(event.target.value)
+    setFormInput({
+      ...formInput,
+      [event.target.name]: event.target.value
+    })
   }
 
   return (
     <div>
         <h2>register a new accout here.</h2>
-            <input onChange={handleInput} value={formInput.email} type="text" placeholder="Email" />
-            <input onChange={handleInput} value={formInput.password} type="password" placeholder="Password" />
+            <input onChange={handleInput} name='email' value={formInput.email} type="email" placeholder="Email" />
+            <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
             <button onClick={handleAddUser}>Submit</button>
     </div>
   )
