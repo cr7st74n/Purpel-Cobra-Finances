@@ -5,6 +5,7 @@ import "../styles/Navbar.css"
 import { logout } from '../utils/auth'
 
 export default function Navbar(props){
+    console.log(props);
     const [extendNav, setExpendNav] = useState(false);
 
     const location = useLocation();
@@ -20,7 +21,7 @@ export default function Navbar(props){
                 </button>
             </div>
             <div className="links">
-                <NavLink to="/">Home</NavLink>
+                
                 {props.user && (
                     <>
                     <NavLink to="/dash">Dashboard</NavLink>
@@ -30,6 +31,7 @@ export default function Navbar(props){
                 )}
                 {!props.user && (
                     <>
+                    <NavLink to="/">Home</NavLink>
                     <NavLink to='/login'>Login</NavLink>
                     <NavLink to='/register'>Register</NavLink>
                     </>

@@ -3,6 +3,9 @@
     height: 200px;
     background: rgb(28, 28, 241);
     display: flex;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     justify-content: center;
     align-items: center;
     flex-direction: column;

@@ -1,0 +1,10 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+div .preview {
+    margin: 7rem 4rem;
+    border: 5px solid black;
+    padding: 3rem;
+}

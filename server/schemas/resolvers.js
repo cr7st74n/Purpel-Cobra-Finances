@@ -1,4 +1,4 @@
-const { User, Expense } = require('../models');
+const { User, Expense, ExpenseType } = require('../models');
 const { signToken } = require('../auth');
 const { ApolloError } = require('apollo-server-express');
 
@@ -22,6 +22,9 @@ const resolvers = {
         },
         async addExpense(_, { name, expenseType, price }) {
             return await Expense.create({name, expenseType, price});
+        },
+        async addExpenseType(_, {expenseType}) {
+            return await ExpenseType.create({expenseType})
         },
         async loginUser(_, { email, password }, context) {
             const user = await User.findOne({email})
