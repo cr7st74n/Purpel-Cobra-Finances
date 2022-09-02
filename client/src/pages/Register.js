@@ -1,11 +1,11 @@
 import React from 'react'
-import { useMutation, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
-const LOGIN_USER = gql`
-  mutation loginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
+const ADD_USER = gql`
+mutation AddUser($email: String!, $password: String!) {
+    addUser(email: $email, password: $password) {
       user {
         email
       }
@@ -14,18 +14,20 @@ const LOGIN_USER = gql`
   }
 `;
 
-export default function Login(props){
-  const loginUser = useMutation(LOGIN_USER)
-  const navigate = useNavigate()
+export default function Register(props){
   const [formInput, setFormInput] = useState({
     email: '',
     password: ''
   });
+  const navigate = useNavigate()
 
-  const handleLoginUser = async (event) => {
+  const addUser = useMutation(ADD_USER, 
+    {variables: formInput})
+
+  const handleAddUser = async (event) => {
     event.preventDefault()
     let user, token
-    const userData = await loginUser()
+    const userData = await addUser()
 
     user = userData.user
     token = userData.token
@@ -42,12 +44,10 @@ export default function Login(props){
 
   return (
     <div>
-        <h2>This is the login page</h2>
-            <form>
+        <h2>register a new accout here.</h2>
             <input onChange={handleInput} value={formInput.email} type="text" placeholder="Email" />
             <input onChange={handleInput} value={formInput.password} type="password" placeholder="Password" />
-            <button onClick={handleLoginUser}>Submit</button>
-            </form>
+            <button onClick={handleAddUser}>Submit</button>
     </div>
   )
 }
