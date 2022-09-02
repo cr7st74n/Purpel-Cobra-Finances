@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 const {ApolloError} = require('apollo-server-express')
-
-const JWT_SECRET = ''
+require("dotenv").config();
 
 module.exports = {
     authMiddleware({req}) {

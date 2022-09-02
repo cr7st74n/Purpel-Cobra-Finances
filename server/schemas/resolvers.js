@@ -1,10 +1,12 @@
-const { User, Expenses } = require('../models');
-const {signToken} = require('../auth');
+const { User, Expense } = require('../models');
+const { signToken } = require('../auth');
 const { ApolloError } = require('apollo-server-express');
 
 const resolvers = {
     Query: {
-
+        async getExpenses() {
+            return await Expense.find()
+        }
     },
 
     Mutation: {
@@ -18,8 +20,8 @@ const resolvers = {
             throw new ApolloError(err)
         }
         },
-        async addExpense(_, { }, context) {
-            console.log('test');
+        async addExpense(_, { name, expenseType, price }) {
+            return await Expense.create({name, expenseType, price});
         },
         async loginUser(_, { email, password }, context) {
             const user = await User.findOne({email})
@@ -32,3 +34,5 @@ const resolvers = {
             return { user, token }
         }
     }}
+
+module.exports = resolvers
