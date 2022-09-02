@@ -36,17 +36,17 @@ userSchema.methods.addTotals = async function () {
     let savingsTotal = 0;
     this.expenses.map((expense) => {
         if (expense.name === 'Grocery') {
-            groceryTotal += expense;
+            groceryTotal += expense.price;
         } else if (expense.name === 'Auto') {
-            autoTotal += expense;
+            autoTotal += expense.price;
         } else if (expense.name === 'Housing') {
-            housingTotal += expense;
+            housingTotal += expense.price;
         } else if (expense.name === 'Entertainment') {
-            entertainmentTotal += expense;
+            entertainmentTotal += expense.price;
         } else if (expense.name === 'Medical') {
-            medicalTotal += expense;
+            medicalTotal += expense.price;
         } else if (expense.name === 'Savings') {
-            savingsTotal += expense;
+            savingsTotal += expense.price;
         }
     })
 }
