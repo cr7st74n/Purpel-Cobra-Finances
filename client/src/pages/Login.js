@@ -47,7 +47,7 @@ export default function Login(props){
   
   return (
     <div>
-        <h2>This is the login page</h2>
+        <h2>LOG IN</h2>
             <form>
             <input onChange={handleInput} name='email' value={formInput.email} type="text" placeholder="Email" />
             <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />

@@ -3,7 +3,7 @@ import React from 'react'
 export default function Stats(){
     return (
       <div>
-          <h2>This is a third page</h2>
+          <h2>Expenses Breakdown</h2>
       </div>
     )
   }
