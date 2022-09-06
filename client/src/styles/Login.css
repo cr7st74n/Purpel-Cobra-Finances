@@ -1,11 +1,29 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+  }
 
-.divEmail{
-    margin: 20px;
+.divEmail {
+  font-size: 14px;
+  position: relative;
 }
 
-.divPass{
+.divPass {
     margin:  20px;
 }
+
+input {
+	border: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: #f2f2f2;
+	padding: 12px;
+	border-radius: 3px;
+	width: 250px;
+	font-size: 14px;
+  }
+
 .btn {
 	box-shadow:inset 0px 0px 15px 3px #23395e;
 	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
@@ -21,10 +39,12 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
 }
+
 .btn:hover {
 	background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
 	background-color:#415989;
 }
+
 .btn:active {
 	position:relative;
 	top:1px;
