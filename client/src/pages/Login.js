@@ -47,7 +47,7 @@ export default function Login(props){
   }
   
   return (
-    <div>
+    <div className='Login'>
         <h2>This is the login page</h2>
         <div className='divEmail'>
           <input onChange={handleInput} name='email' value={formInput.email} type="text" placeholder="Email" />
