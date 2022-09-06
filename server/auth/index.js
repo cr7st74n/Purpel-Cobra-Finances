@@ -1,9 +1,9 @@
 require("dotenv").config();
 const jwt = require('jsonwebtoken')
-const {ApolloError} = require('apollo-server-express')
+const { ApolloError } = require('apollo-server-express')
 
 module.exports = {
-    authMiddleware({req}) {
+    authMiddleware({ req }) {
         let token = req.headers.authorization;
 
         if (!token) return req;
@@ -14,10 +14,10 @@ module.exports = {
 
         token = token.split(' ').pop().trim()
 
-        try{
+        try {
             const { data } = jwt.decode(token, process.env.JWT_SECRET, {
                 maxAge: '6h'
-            } );
+            });
 
             req.user = data;
             return req;
@@ -27,7 +27,7 @@ module.exports = {
     },
 
     signToken(user_data) {
-        return jwt.sign({data: user_data}, process.env.JWT_SECRET, {
+        return jwt.sign({ data: user_data }, process.env.JWT_SECRET, {
             expiresIn: '6h'
         });
     }

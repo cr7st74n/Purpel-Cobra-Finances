@@ -1,6 +1,6 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
-const expenseTypeSchema = new Schema ({
+const expenseTypeSchema = new Schema({
     expenseType: {
         type: String,
         required: true

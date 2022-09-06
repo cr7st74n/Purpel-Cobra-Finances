@@ -11,23 +11,23 @@ const resolvers = {
 
     Mutation: {
         async addUser(_, { email, password }, context) {
-        try {
-            const user = await User.create({email, password})
-    
-            const token = signToken(user);
-            return {user, token}
-        } catch (err) {
-            throw new ApolloError(err)
-        }
+            try {
+                const user = await User.create({ email, password })
+
+                const token = signToken(user);
+                return { user, token }
+            } catch (err) {
+                throw new ApolloError(err)
+            }
         },
         async addExpense(_, { name, expenseType, price }) {
-            return await Expense.create({name, expenseType, price});
+            return await Expense.create({ name, expenseType, price });
         },
-        async addExpenseType(_, {expenseType}) {
-            return await ExpenseType.create({expenseType})
+        async addExpenseType(_, { expenseType }) {
+            return await ExpenseType.create({ expenseType })
         },
         async loginUser(_, { email, password }, context) {
-            const user = await User.findOne({email})
+            const user = await User.findOne({ email })
 
             if (!user) throw new ApolloError('No user found with that email')
 
@@ -36,6 +36,7 @@ const resolvers = {
             const token = signToken(user)
             return { user, token }
         }
-    }}
+    }
+}
 
 module.exports = resolvers

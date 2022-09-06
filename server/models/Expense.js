@@ -1,6 +1,6 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
-const expSchema = new Schema ({
+const expSchema = new Schema({
     expenseType: {
         type: SchemaTypes.ObjectID,
         ref: 'ExpenseType'

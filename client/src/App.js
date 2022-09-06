@@ -23,15 +23,15 @@ function App() {
 
   return (
     <div className="App">
-        <Navbar user={user}/>
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/dash" element={<Dashboard user={user}/>}/>
-          <Route path="/stats" element={<Stats />}/>
-          <Route path="/login" element={<Login setUser={setUser}/>}/>
-          <Route path="/register" element={<Register setUser={setUser}/>}/>
-        </Routes>
-        <Footer />
+      <Navbar user={user} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dash" element={<Dashboard user={user} />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/register" element={<Register setUser={setUser} />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

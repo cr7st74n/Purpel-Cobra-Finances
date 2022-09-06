@@ -6,7 +6,7 @@ const db = require('../config/connection')
 let expenseTypes = []
 
 db.once('open', () => {
-    ExpenseType.insertMany([{expenseType: 'Entertainment'}]).then((expenses) => {
+    ExpenseType.insertMany([{ expenseType: 'Entertainment' }]).then((expenses) => {
         console.log(expenses);
     })
 })

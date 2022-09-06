@@ -14,7 +14,7 @@ const LOGIN_USER = gql`
   }
 `;
 
-export default function Login(props){
+export default function Login(props) {
   const navigate = useNavigate()
   const [formInput, setFormInput] = useState({
     email: '',
@@ -44,15 +44,15 @@ export default function Login(props){
       [event.target.name]: event.target.value
     })
   }
-  
+
   return (
     <div>
-        <h2>This is the login page</h2>
-            <form>
-            <input onChange={handleInput} name='email' value={formInput.email} type="text" placeholder="Email" />
-            <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
-            <button onClick={handleLoginUser}>Submit</button>
-            </form>
+      <h2>This is the login page</h2>
+      <form>
+        <input onChange={handleInput} name='email' value={formInput.email} type="text" placeholder="Email" />
+        <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
+        <button onClick={handleLoginUser}>Submit</button>
+      </form>
     </div>
   )
 }

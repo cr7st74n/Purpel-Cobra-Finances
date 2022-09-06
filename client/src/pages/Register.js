@@ -14,16 +14,17 @@ mutation AddUser($email: String!, $password: String!) {
   }
 `;
 
-export default function Register(props){
+export default function Register(props) {
   const [formInput, setFormInput] = useState({
     email: '',
     password: ''
   });
   const navigate = useNavigate()
 
-  const [addUser] = useMutation(ADD_USER, 
-    {variables: formInput
-  })
+  const [addUser] = useMutation(ADD_USER,
+    {
+      variables: formInput
+    })
 
   const handleAddUser = async (event) => {
     event.preventDefault()
@@ -48,10 +49,10 @@ export default function Register(props){
 
   return (
     <div>
-        <h2>register a new accout here.</h2>
-            <input onChange={handleInput} name='email' value={formInput.email} type="email" placeholder="Email" />
-            <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
-            <button onClick={handleAddUser}>Submit</button>
+      <h2>register a new accout here.</h2>
+      <input onChange={handleInput} name='email' value={formInput.email} type="email" placeholder="Email" />
+      <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
+      <button onClick={handleAddUser}>Submit</button>
     </div>
   )
 }

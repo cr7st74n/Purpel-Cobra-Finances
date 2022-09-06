@@ -2,12 +2,12 @@ import React from "react";
 import "../styles/Footer.css"
 
 export default function Footer() {
-  return(
+  return (
     <div className="footer">
-        <div>
+      <div>
 
-        </div>
-        <p> &copy; 2022 All rigths reserved</p>
+      </div>
+      <p> &copy; 2022 All rigths reserved</p>
     </div>
   )
 }
