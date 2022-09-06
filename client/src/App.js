@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     const user_data = isAuthenticated();
-
+    
     if (user_data) setUser(user_data);
   }, []);
 

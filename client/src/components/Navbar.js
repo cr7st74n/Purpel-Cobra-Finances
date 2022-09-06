@@ -5,7 +5,7 @@ import "../styles/Navbar.css"
 import { logout } from '../utils/auth'
 
 export default function Navbar(props){
-    console.log(props);
+    // console.log(`${props} in navbar`);
     const [extendNav, setExpendNav] = useState(false);
 
     const location = useLocation();
