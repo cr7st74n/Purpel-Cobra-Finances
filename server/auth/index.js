@@ -15,7 +15,7 @@ module.exports = {
         token = token.split(' ').pop().trim()
 
         try{
-            const { data } = jwt.decode(token, process.env.JWT_SECRET, {
+            const { data } = jwt.verify(token, process.env.JWT_SECRET, {
                 maxAge: '6h'
             } );
 
