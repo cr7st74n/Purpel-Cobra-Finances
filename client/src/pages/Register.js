@@ -48,10 +48,15 @@ export default function Register(props){
 
   return (
     <div>
-        <h2>register a new accout here.</h2>
-            <input onChange={handleInput} name='email' value={formInput.email} type="email" placeholder="Email" />
-            <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
-            <button onClick={handleAddUser}>Submit</button>
+        <h2>Register a new account here.</h2>
+
+        <div className='divEmail'>
+          <input className='email' onChange={handleInput} name='email' value={formInput.email} type="email" placeholder="Email" />
+        </div>
+        <div className='divPass'>
+          <input className='password' onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
+        </div>
+        <button className='btn' onClick={handleAddUser}>Submit</button>
     </div>
   )
 }

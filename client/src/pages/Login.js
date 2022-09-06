@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client';
+import "../styles/Login.css"
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -48,11 +49,13 @@ export default function Login(props){
   return (
     <div>
         <h2>This is the login page</h2>
-            <form>
-            <input onChange={handleInput} name='email' value={formInput.email} type="text" placeholder="Email" />
-            <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" />
-            <button onClick={handleLoginUser}>Submit</button>
-            </form>
+        <div className='divEmail'>
+          <input onChange={handleInput} name='email' value={formInput.email} type="text" placeholder="Email" />
+        </div>
+        <div className='divPass'>
+          <input onChange={handleInput} name='password' value={formInput.password} type="password" placeholder="Password" /> 
+        </div>
+        <button className='btn' onClick={handleLoginUser}>Submit</button>
     </div>
   )
 }

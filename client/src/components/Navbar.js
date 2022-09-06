@@ -15,7 +15,7 @@ export default function Navbar(props){
     }, [location])
     return(
         <div className="navbar" id={extendNav? "open": "close"}>
-            <div className="setMobile">
+            <div className="toggleButton">
                 <button onClick={()=>{setExpendNav((prev)=> !prev)}}>
                 <AiOutlineMenu />
                 </button>
