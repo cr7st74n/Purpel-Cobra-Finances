@@ -1,10 +1,12 @@
+require("dotenv").config();
 const { ExpenseType } = require('../models')
 const db = require('../config/connection')
+
 
 let expenseTypes = []
 
 db.once('open', () => {
-    ExpenseType.insertMany([{expenseType: 'Auto'}]).then((expenses) => {
+    ExpenseType.insertMany([{expenseType: 'Entertainment'}]).then((expenses) => {
         console.log(expenses);
     })
 })
