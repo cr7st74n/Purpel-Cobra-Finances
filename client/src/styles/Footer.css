@@ -3,7 +3,7 @@
   height: 200px;
   background: rgb(20, 20, 139);
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   justify-content: center;
   align-items: center;
