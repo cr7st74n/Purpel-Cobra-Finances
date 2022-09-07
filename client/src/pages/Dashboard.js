@@ -102,7 +102,7 @@ export default function Dashboard(props) {
               <li key={exp._id}>{exp.name} - {exp.expenseType} - {exp.price}</li>
             ))}
             </ul>
-      ) : <></>}
+      ) : <></> }
       <div>
         <button onClick={openModal}>Add New Expense</button>
         <Modal
