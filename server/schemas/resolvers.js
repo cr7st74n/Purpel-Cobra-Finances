@@ -11,7 +11,15 @@ const resolvers = {
             return await User.find().populate('expenses')
         },
         async getUser(_, args) {
-            return await User.findById(args._id).populate('expenses')
+            const user = await User.findById(args.id).populate({
+                path: "expenses",
+                populate: {
+                    path: "expenseType",
+                    model: "ExpenseType"
+                }
+            })
+            console.log(user);
+            return user
         },
         async getExpenseTypes() {
             return await ExpenseType.find()
