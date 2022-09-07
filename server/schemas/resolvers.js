@@ -6,8 +6,18 @@ const resolvers = {
     Query: {
         async getExpenses() {
             return await Expense.find()
+        },
+        async getAllUsers() {
+            return await User.find().populate('expenses')
+        },
+        async getUser(_, args) {
+            return await User.findById(args._id).populate('expenses')
+        },
+        async getExpenseTypes() {
+            return await ExpenseType.find()
         }
     },
+
 
     Mutation: {
         async addUser(_, { email, password }, context) {
@@ -20,8 +30,19 @@ const resolvers = {
             throw new ApolloError(err)
         }
         },
-        async addExpense(_, { name, expenseType, price }) {
-            return await Expense.create({name, expenseType, price});
+        async addExpense(_, args, context) {
+            const expense = await Expense.create({
+                name: args.name,
+                expenseType: args.expenseType,
+                price: args.price
+            })
+            const change = await User.findByIdAndUpdate({_id: context.user._id},{
+                $push: {
+                    expenses: expense._id
+                }
+            }, {new: true}).populate('expenses')
+            console.log(change);
+            return change
         },
         async addExpenseType(_, {expenseType}) {
             return await ExpenseType.create({expenseType})
