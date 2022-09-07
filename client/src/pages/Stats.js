@@ -1,19 +1,20 @@
 import {React} from 'react'
 import {gql, useQuery} from '@apollo/client'
 
-const GET_EXPENSES = gql`
+const GET_USER = gql`
 query Query {
-  getExpenses {
+  getUser(_id: $id) {
+    expenses {
     name
     expenseType
     price
+    }
   }
 }
 `;
 
 export default function Stats(){
-  const [error, loading, data] = useQuery(GET_EXPENSES)
-    console.log(data.getExpenses);
+  const [error, loading, data] = useQuery(GET_USER)
   
     return (
       <div>
@@ -21,6 +22,7 @@ export default function Stats(){
           <div className='Auto'>
             {error && <p className="error">{error.message}</p>}
             {loading && <p>Loading...</p>}
+            {data && !data.getExpenses.length && <p>Currently No Expenses Were Found</p>}
             {data && (
             <ul>
             {data.getExpenses.map(exp => (
