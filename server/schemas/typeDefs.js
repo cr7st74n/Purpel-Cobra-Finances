@@ -11,11 +11,15 @@ const typeDefs = gql`
     user: User
     token: ID
   }
+  type ExpenseType {
+      _id: ID
+      expenseType: String
+    }
 
   type Expense {
     _id: ID
     name: String
-    expenseType: String
+    expenseType: ExpenseType
     price: Int
   }
 
@@ -27,7 +31,7 @@ const typeDefs = gql`
   type Query {
     getExpenses: [Expense]
     getAllUsers: [User]
-    getUser(_id: ID!): User
+    getUser(id: ID!): User
     getExpenseTypes: [ExpenseType]
   }
 

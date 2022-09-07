@@ -26,10 +26,14 @@ query getExpenseTypes{
 
 const GET_USER = gql`
 query Query($id: ID!) {
-  getUser(_id: $id) {
+  getUser(id: $id) {
     expenses {
+      _id
       name
-      expenseType
+      expenseType {
+        _id
+        expenseType
+      }
       price
     }
   }
@@ -60,8 +64,16 @@ export default function Dashboard(props) {
       price: parseInt(formInput.price)
     }
   })
-  const {loading, data, error} = useQuery(GET_EXPENSETYPES)
-  const {loading: loading2, data: data2, error: error2} = useQuery(GET_USER)
+  const { loading, data, error } = useQuery(GET_EXPENSETYPES)
+  const {loading: loading2, data: data2, error: error2} = useQuery(GET_USER, {
+    variables: {
+      id: props.user._id 
+    }
+  })
+  if (data2) {
+    console.log(data2);
+  }
+  // console.log(props.user._id);
 
   const handleAddExpense = async (event) => {
     event.preventDefault()
@@ -96,13 +108,14 @@ export default function Dashboard(props) {
     <div>
       <h2>Welcome {props.user && props.user.email}</h2>
       <p>Budget</p>
-      {data2 && props.user.id ? (
-            <ul>
-            {data2.getUser.map(exp => (
-              <li key={exp._id}>{exp.name} - {exp.expenseType} - {exp.price}</li>
-            ))}
-            </ul>
-      ) : <></> }
+
+      {data2 && (<ul>
+        {data2.getUser.expenses.map(exp => {
+          console.log(exp);
+          return <li key={exp._id}>{exp.name} - {exp.expenseType.expenseType} - {exp.price}</li>
+        })}
+      </ul>)}
+
       <div>
         <button onClick={openModal}>Add New Expense</button>
         <Modal
@@ -115,19 +128,19 @@ export default function Dashboard(props) {
           <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Insert Expense Details</h2>
           <button onClick={closeModal}>close</button>
           <form>
-            <input className='name' onChange={handleInput} name='name' value={formInput.name} type="text" placeholder="Name of Expense"/>
-            <input className='price' onChange={handleInput} name='price' value={formInput.price} type="number" placeholder="Price of Expense"/>
+            <input className='name' onChange={handleInput} name='name' value={formInput.name} type="text" placeholder="Name of Expense" />
+            <input className='price' onChange={handleInput} name='price' value={formInput.price} type="number" placeholder="Price of Expense" />
             <div className="select" >
-            <select onChange={handleInput} name='expenseType'>
+              <select onChange={handleInput} name='expenseType'>
                 <option defaultChecked>Select Expense Type</option>
                 {data && data.getExpenseTypes.map(expenseType => {
                   return <option key={expenseType._id} value={expenseType._id}>{expenseType.expenseType}</option>
                 })}
-                
-            </select>
-            <div className="select_arrow">
+
+              </select>
+              <div className="select_arrow">
+              </div>
             </div>
-        </div>
             <button onClick={handleAddExpense}>Submit</button>
           </form>
         </Modal>
