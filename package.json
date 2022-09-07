@@ -27,5 +27,9 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "graphql": "^16.6.0"
+  },
+  "engines": {
+    "node":"v16.16.0",
+    "npm": "8.13.2"
   }
 }
