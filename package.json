@@ -8,7 +8,9 @@
     "dev:client": "cd ./client && npm start",
     "start": "cd ./server && npm start",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "seed:ExpenseTypes": "cd ./server/seed && node ExpenseTypes.js"
+    "seed:ExpenseTypes": "cd ./server/seed && node ExpenseTypes.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -22,14 +24,15 @@
   },
   "homepage": "https://github.com/jdtdesigns/react_playground_uofm#readme",
   "devDependencies": {
-    "concurrently": "^7.3.0"
+    "concurrently": "^7.3.0",
+    "gh-pages": "^4.0.0"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "graphql": "^16.6.0"
   },
   "engines": {
-    "node":"v16.16.0",
+    "node": "v16.16.0",
     "npm": "8.13.2"
   }
 }
