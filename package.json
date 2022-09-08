@@ -1,4 +1,5 @@
 {
+  "homepage":"https//cr7st74n.github.io/Purpel-Cobra-Finances",
   "name": "react_playground",
   "version": "1.0.0",
   "description": "",
@@ -8,6 +9,7 @@
     "dev:client": "cd ./client && npm start",
     "start": "cd ./server && npm start",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build":"react-scripts start",
     "seed:ExpenseTypes": "cd ./server/seed && node ExpenseTypes.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
